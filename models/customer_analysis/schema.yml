@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: bigquery_nettikauppasimulaattori
+    database: nettikauppasimulaattori # BigQuery project.
+    schema: store_operational         # BigQuery dataset.
+    tables:
+      - name: customers
+      - name: orders
+      - name: order_items
+      - name: products
+
+  - name: bigquery_nettikauppasimulaattori_constants
+    database: nettikauppasimulaattori
+    schema: store_constants
+    tables:
+      - name: delivery_types
+      - name: orderstatus_types
+      - name: product_categories
