@@ -25,12 +25,11 @@ ranked_categories AS (
     with tmp2 AS (
         SELECT
             orders.customer_id AS customer_id,
-            CAST(products.id / 1000 AS INTEGER) AS product_category,
+            CAST(items.product_id / 1000 AS INTEGER) AS product_category,
             COUNT(*) AS count,
             RANK() OVER (PARTITION BY orders.customer_id ORDER BY COUNT(*) DESC) AS category_rank,
         FROM {{ ref("staging_orders") }} AS orders
         JOIN {{ ref("staging_order_items") }} AS items ON items.order_id = orders.id
-        JOIN {{ ref("staging_products") }} AS products ON products.id = items.product_id
 
         GROUP BY orders.customer_id, product_category
         )
