@@ -1,5 +1,11 @@
 version: 2
 
+models:
+  - name: CA_aggregate_customer_analysis_data
+    description: "Gather data required for analysing customers into single table."
+    config:
+      materialized: table
+
 sources:
   - name: bigquery_nettikauppasimulaattori
     database: nettikauppasimulaattori # BigQuery project.
