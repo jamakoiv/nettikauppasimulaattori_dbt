@@ -7,7 +7,7 @@ SELECT
     SUM(products.price - products.wholesale_price - (products.price * products.vat)) AS profit,
 
 FROM {{ ref("staging_products") }} AS products
-JOIN {{ ref("staging_order_items") }} AS items ON items.product_id = products.id
+INNER JOIN {{ ref("staging_order_items") }} AS items ON items.product_id = products.id
 
 GROUP BY product_category
 ORDER BY product_category ASC
