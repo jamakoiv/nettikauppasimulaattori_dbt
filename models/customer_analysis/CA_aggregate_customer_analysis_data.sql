@@ -5,6 +5,7 @@ WITH averages AS (
         totals.customer_id,
         AVG(totals.price) AS price,
         AVG(totals.profit) AS profit,
+        AVG(totals.average_product_price) AS average_product_price,
         COUNT(*) AS number_of_orders
     FROM {{ ref("CA_order_totals") }} AS totals
 
@@ -15,7 +16,8 @@ WITH averages AS (
 /* Gather all necessary customer data to single table. */
 SELECT
     averages.customer_id as customer_id,
-    averages.price AS average_price,
+    averages.price AS average_order_price,
+    averages.average_product_price AS average_product_price,
     averages.profit AS average_profit,
     averages.number_of_orders AS number_of_orders,
     mean_time.mean_hours_between_orders AS mean_hours_between_orders,

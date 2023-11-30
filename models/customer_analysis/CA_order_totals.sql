@@ -9,6 +9,7 @@ WITH order_totals AS (
         SUM(products.wholesale_price) AS wholesale_price,
         SUM(products.price * products.vat) AS tax,
         SUM(products.price) AS price,
+        AVG(products.price) AS average_product_price,
         SUM(products.price) - SUM(products.wholesale_price) - SUM(products.price * products.vat) AS profit
     FROM {{ ref("staging_orders") }} AS orders
     JOIN {{ ref("staging_order_items") }} AS items ON orders.id = items.order_id
