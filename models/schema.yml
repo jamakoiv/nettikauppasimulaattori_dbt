@@ -35,6 +35,15 @@ sources:
       - name: orders
       - name: order_items
       - name: products
+    
+  - name: nettikauppasimulaattori_data_warehouse
+    database: nettikauppasimulaattori
+    schema: store_analysis_dbt
+    tables:
+      - name: import_customers
+      - name: import_order_items
+      - name: import_orders
+      - name: import_products
 
   - name: bigquery_nettikauppasimulaattori_constants
     database: nettikauppasimulaattori

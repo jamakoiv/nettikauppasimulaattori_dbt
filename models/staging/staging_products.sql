@@ -1,10 +1,8 @@
 
 WITH products AS (
     SELECT 
-        *,
-        DATETIME_TRUNC(CURRENT_DATETIME("UTC"), SECOND) AS created_at
-    
-    FROM {{ source("bigquery_nettikauppasimulaattori", "products") }}
+        *
+    FROM {{ source("nettikauppasimulaattori_data_warehouse", "import_products") }}
 
     WHERE id IS NOT NULL
     AND name IS NOT NULL

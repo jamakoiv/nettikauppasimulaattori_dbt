@@ -1,9 +1,7 @@
 WITH orders AS (
     SELECT DISTINCT 
-        *,
-        DATETIME_TRUNC(CURRENT_DATETIME("UTC"), SECOND) AS created_at
-
-    FROM {{ source("bigquery_nettikauppasimulaattori", "orders") }}
+        *
+    FROM {{ source("nettikauppasimulaattori_data_warehouse", "import_orders") }}
 
     WHERE   id IS NOT NULL
         AND order_placed IS NOT NULL
