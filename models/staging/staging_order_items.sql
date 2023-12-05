@@ -1,7 +1,7 @@
 WITH items AS (
     SELECT 
         *,
-        DATETIME_TRUNC(CURRENT_DATETIME, SECOND) AS created_at
+        DATETIME_TRUNC(CURRENT_DATETIME("UTC"), SECOND) AS created_at
     FROM {{ source("bigquery_nettikauppasimulaattori", "order_items") }}
 
     WHERE order_id IS NOT NULL

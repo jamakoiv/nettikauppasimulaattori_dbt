@@ -4,7 +4,7 @@ WITH customers AS (
         id,
         first_name,
         last_name,
-        DATETIME_TRUNC(CURRENT_DATETIME, SECOND) AS created_at
+        DATETIME_TRUNC(CURRENT_DATETIME("UTC"), SECOND) AS created_at
     FROM {{ source('bigquery_nettikauppasimulaattori', 'customers') }}
 
     WHERE id IS NOT NULL
