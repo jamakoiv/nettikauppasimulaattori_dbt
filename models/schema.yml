@@ -45,10 +45,11 @@ sources:
       - name: import_orders
       - name: import_products
 
-  - name: bigquery_nettikauppasimulaattori_constants
-    database: nettikauppasimulaattori
-    schema: store_constants
-    tables:
-      - name: delivery_types
-      - name: orderstatus_types
-      - name: product_categories
+
+#  - name: bigquery_nettikauppasimulaattori_constants
+#    database: nettikauppasimulaattori
+#    schema: store_constants
+#    tables:
+#      - name: delivery_types
+#      - name: orderstatus_types
+#      - name: product_categories

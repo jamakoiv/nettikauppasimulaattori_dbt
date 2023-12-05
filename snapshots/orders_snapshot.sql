@@ -3,7 +3,7 @@
 {{
     config(
         target_database='nettikauppasimulaattori',
-        target_schema='store_operational',
+        target_schema='store_analysis_dbt',
         unique_key='id',
     
         strategy='timestamp',
@@ -13,6 +13,6 @@
 
 SELECT
     *
-FROM {{ source("bigquery_nettikauppasimulaattori", "orders") }}
+FROM {{ source("nettikauppasimulaattori_data_warehouse", "import_orders") }}
 
 {% endsnapshot %}
