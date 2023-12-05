@@ -1,6 +1,9 @@
 
 WITH products AS (
-    SELECT *
+    SELECT 
+        *,
+        DATETIME_TRUNC(CURRENT_DATETIME, SECOND) AS created_at
+    
     FROM {{ source("bigquery_nettikauppasimulaattori", "products") }}
 
     WHERE id IS NOT NULL

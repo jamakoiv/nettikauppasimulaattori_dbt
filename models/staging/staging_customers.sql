@@ -3,7 +3,8 @@ WITH customers AS (
     SELECT DISTINCT
         id,
         first_name,
-        last_name
+        last_name,
+        DATETIME_TRUNC(CURRENT_DATETIME, SECOND) AS created_at
     FROM {{ source('bigquery_nettikauppasimulaattori', 'customers') }}
 
     WHERE id IS NOT NULL

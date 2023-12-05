@@ -1,5 +1,7 @@
 WITH orders AS (
-    SELECT DISTINCT *
+    SELECT DISTINCT 
+        *,
+        DATETIME_TRUNC(CURRENT_DATETIME, SECOND) AS created_at
 
     FROM {{ source("bigquery_nettikauppasimulaattori", "orders") }}
 
