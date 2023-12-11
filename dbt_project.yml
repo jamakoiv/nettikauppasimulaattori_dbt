@@ -40,3 +40,10 @@ models:
     # Applies to all files under models/example/
     example:
       +materialized: table
+
+vars:
+  "dbt_ml:audit_schema": "ml_model_audit"
+  "dbt_ml:audit_table": "ml_models"
+
+on-run-start:
+  - "{{ dbt_ml.create_model_audit_table() }}"  # Create table if necessary.
