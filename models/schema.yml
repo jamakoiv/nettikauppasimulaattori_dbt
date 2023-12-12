@@ -16,16 +16,6 @@ models:
     config:
       materialized: table
 
-  - name: CaA_daily_totals
-    description: "Calculate order totals for each day."
-    config:
-      materialized: table
-  
-  - name: CaA_monthly_totals
-    description: "Calculate order totals for each month."
-    config:
-      materialized: table
-
 sources:
   - name: bigquery_nettikauppasimulaattori
     database: nettikauppasimulaattori # BigQuery project.

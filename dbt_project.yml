@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'my_new_project'
+name: 'nettikauppasimulaattori_dbt'
 version: '1.0.0'
 config-version: 2
 
@@ -36,10 +36,14 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  my_new_project:
-    # Applies to all files under models/example/
-    example:
+  nettikauppasimulaattori_dbt:
+    calender_analysis:
+      +files: models/calender_analysis/*.sql
+      +enabled: true
       +materialized: table
+
+    import_production_database:
+      +enabled: true
 
 vars:
   "dbt_ml:audit_schema": "ml_model_audit"
