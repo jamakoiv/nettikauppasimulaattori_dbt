@@ -1,21 +1,5 @@
 version: 2
 
-models:
-  - name: CA_aggregate_customer_analysis_data
-    description: "Gather data required for analysing customers into single table."
-    config:
-      materialized: table
-
-  - name: PA_individual_products
-    description: "Get statistics for each individual product."
-    config:
-      materialized: table
-
-  - name: PA_product_categories
-    description: "Get statistics for each product category."
-    config:
-      materialized: table
-
 sources:
   - name: bigquery_nettikauppasimulaattori
     database: nettikauppasimulaattori # BigQuery project.
@@ -28,7 +12,7 @@ sources:
     
   - name: nettikauppasimulaattori_data_warehouse
     database: nettikauppasimulaattori
-    schema: store_analysis_dbt
+    schema: store_analysis_dbt_staging
 
     freshness:
       warn_after:
