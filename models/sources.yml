@@ -12,7 +12,7 @@ sources:
     
   - name: nettikauppasimulaattori_data_warehouse
     database: nettikauppasimulaattori
-    schema: store_analysis_dbt
+    schema: store_analysis_dbt_staging
 
     freshness:
       warn_after:
