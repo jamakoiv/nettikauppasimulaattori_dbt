@@ -37,12 +37,27 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   nettikauppasimulaattori_dbt:
+    import_production_database:
+      +schema: staging
+      +enabled: true
+    
+    staging:
+      +schema: staging
+      +enabled: true
+
     calender_analysis:
-      +files: models/calender_analysis/*.sql
       +enabled: true
       +materialized: table
 
-    import_production_database:
+    customer_analysis:
+      +enabled: true
+      +materialized: view
+
+    product_analysis:
+      +enabled: true
+      +materialized: view
+    
+    bigquery_ml:
       +enabled: true
 
 vars:
