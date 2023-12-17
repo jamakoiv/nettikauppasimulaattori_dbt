@@ -4,12 +4,10 @@
         ml_config={
             'model_type': 'KMEANS',
             'kmeans_init_method': 'KMEANS++',
-            'num_clusters': 6
+            'num_clusters': 8
         }
     )
 }}
-
-/* post_hook="{{ dbt_ml.model_audit() }}" Does not work, error with table datatypes.*/ 
 
 SELECT
     average_order_price,
