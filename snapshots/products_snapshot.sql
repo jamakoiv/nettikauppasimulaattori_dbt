@@ -12,6 +12,6 @@
 
 SELECT
     *
-FROM {{ source("nettikauppasimulaattori_data_warehouse", "import_orders") }}
+FROM {{ source("nettikauppasimulaattori_data_warehouse", "import_products") }}
 
 {% endsnapshot %}

@@ -66,3 +66,6 @@ vars:
 
 on-run-start:
   - "{{ dbt_ml.create_model_audit_table() }}"  # Create table if necessary.
+
+snapshots:
+  +target_schema: "store_analysis_prod"
