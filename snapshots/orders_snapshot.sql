@@ -3,7 +3,6 @@
 {{
     config(
         target_database='nettikauppasimulaattori',
-        target_schema='store_analysis_dbt',
         unique_key='id',
     
         strategy='timestamp',
