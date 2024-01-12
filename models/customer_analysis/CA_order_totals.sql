@@ -47,7 +47,7 @@ CASE
         dbt_valid_to IS NULL
 END
 
-AND res.customer_id = 219
+/* AND res.customer_id = 219 */ 
 
 GROUP BY order_id, customer_id, order_placed
 ORDER BY order_placed, customer_id
