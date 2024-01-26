@@ -1,26 +1,28 @@
-# nettikauppasimulaattori_dbt
-DBT-code related to the nettikauppasimulaattori-project analytics.
+## DBT-code related to the nettikauppasimulaattori-repository.
 
-Main parts:
---------------
+Import operational database from the nettikauppasimulaattori-project and
+transform the data to suitable form for analysis.
 
-import_production_database: 
-    Simulates importing production database to data warehouse.
-    Adds created_at date-tag for monitoring source freshness.
+Main parts have been arranged into following directories in models:
 
-staging:
-    Basic data-sanitation, throwing out duplicates and NULL data.
+ - **import_production_database**: 
+    - Import raw production-database to data warehouse.
+    - Add date-tag for monitoring source freshness.
 
-calender_analysis:
-    Basic order-statistics like total sales for hour, day, and month time-bins.
-    TODO: Add same for products. Maybe merge product analysis here?
-    TODO: Change into incremental models.
+ - **staging**:
+    - Data-sanitation, throw out duplicates and incomplete data.
+    - Limit amount of data if using development-environment.
 
-customer_analysis:
-    Extract features describing customer behavious for each customer.
-    Main goal is to use ML-clustering for identifying possible customer-segments.
+ - **calender_analysis**:
+    - Statistics (total sales, amount of orders etc.) orders for hour, day, and month.
+    - Used mainly for ML-models forecasting future sales etc.
 
-product_analysis:
-    Basic totals for each product and product-category, how many ordered, total sales etc.
-    TODO: should probably calculate per hour, day, month to track possible changes over time.
+ - **customer_analysis**:
+    - Extract features related to customer behaviour for each customer.
+    - Used mainly as input for customer-segmentation ML-models.
+
+ - **product_analysis**:
+    - Totals for each product and product-category, how many ordered, total sales etc.
+    - TODO: Move to calender_analysis.
+    - TODO: Calculate per hour, day, month to track possible changes over time.
 
