@@ -28,7 +28,7 @@ SELECT
     SUM(res.price) - SUM(res.wholesale_price) - SUM(res.price * res.vat) AS profit
 
 FROM res
-WHERE order_placed BETWEEN dbt_valid_from AND COALESCE(dbt_valid_to, "2100-01-01")
+WHERE order_placed BETWEEN IF(order_placed < dbt_valid_from, "1900-01-01", dbt_valid_from) AND COALESCE(dbt_valid_to, "2100-01-01")
 
 /* AND res.customer_id = 219 */ 
 
