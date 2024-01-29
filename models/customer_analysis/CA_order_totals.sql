@@ -6,12 +6,8 @@ WITH res AS (
         products.wholesale_price AS wholesale_price,
         products.vat AS vat,
         products.price AS price,
-
         dbt_valid_from,
         dbt_valid_to,
-
-        MIN(dbt_valid_from) OVER (PARTITION BY products.id) AS min_dbt_valid_from,
-        MAX(dbt_valid_from) OVER (PARTITION BY products.id) AS max_dbt_valid_from
 
     FROM {{ ref('staging_orders') }} AS orders
     JOIN {{ ref('staging_order_items') }} AS items 
@@ -32,20 +28,7 @@ SELECT
     SUM(res.price) - SUM(res.wholesale_price) - SUM(res.price * res.vat) AS profit
 
 FROM res
-WHERE 
-CASE
-    -- When order has been placed within snapshot window.
-    WHEN (order_placed > dbt_valid_from AND order_placed < dbt_valid_to) THEN
-        order_placed BETWEEN dbt_valid_from AND dbt_valid_to
-
-    -- When order has been placed before earliest snapshot.
-    WHEN (order_placed < min_dbt_valid_from) THEN
-        dbt_valid_from = min_dbt_valid_from
-
-    -- When order has been placed after latest snapshot.
-    WHEN (order_placed > max_dbt_valid_from) THEN
-        dbt_valid_to IS NULL
-END
+WHERE order_placed BETWEEN dbt_valid_from AND COALESCE(dbt_valid_to, "2100-01-01")
 
 /* AND res.customer_id = 219 */ 
 
