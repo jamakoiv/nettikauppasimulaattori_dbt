@@ -1,6 +1,6 @@
 ## DBT-code related to the nettikauppasimulaattori-repository.
 
-Import operational database from the nettikauppasimulaattori-project and
+Import operational database from the [nettikauppasimulaattori](https://github.com/jamakoiv/nettikauppasimulaattori)-project and
 transform the data to suitable form for analysis.
 
 Main parts have been arranged into following directories in models:
